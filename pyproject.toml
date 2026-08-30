@@ -1,0 +1,32 @@
+[project]
+name = "usb-cable-benchmark"
+version = "0.1.0"
+description = "Non-destructive physical USB cable benchmark and diagnostic tool using Android ADB"
+authors = [
+    { name = "Antigravity Assistant" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "rich>=13.7.0",
+    "typer>=0.12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+usb-tester = "src.usb_tester.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/usb_tester"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
